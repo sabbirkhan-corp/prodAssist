@@ -1,5 +1,6 @@
 package com.sabbirunix.prodassist.ui.today;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
 import com.sabbirunix.prodassist.addtask.FabHandler.FabHanlder;
+import com.sabbirunix.prodassist.addtask.ProjectActivity;
+import com.sabbirunix.prodassist.addtask.RegularActivity;
+import com.sabbirunix.prodassist.addtask.TodoActivity;
 
 //public class TodayFragment extends Fragment implements View.OnClickListener {
 public class TodayFragment extends Fragment {
@@ -38,6 +42,7 @@ public class TodayFragment extends Fragment {
         final TextView textView = root.findViewById(R.id.text_home);
 
 
+        //Sync with LaterFragment
         //finding the fabButtons in the fragment
         fabMain = root.findViewById(R.id.fab_main);
         fabRegular = root.findViewById(R.id.fab_regular);
@@ -84,6 +89,46 @@ public class TodayFragment extends Fragment {
                 }
             }
         });
+
+
+
+
+
+
+        //Handling the userClick on fabRegular
+        fabRegular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tapped on fabRegular", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), RegularActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Handling the userClick on fabProject
+        fabProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tapped on fabProject", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), ProjectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Handling the userClick on fabTodo
+        fabTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tapped on fabTodo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), TodoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
 
 //        FabHanlder fabHanlder = new FabHanlder();
 //        fabHanlder.onClick(fabMain);

@@ -16,15 +16,15 @@ import com.sabbirunix.prodassist.R;
 
 public class LaterFragment extends Fragment {
 
-    private LaterViewModel dashboardViewModel;
+    private LaterViewModel laterViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
+        laterViewModel =
                 new ViewModelProvider(this).get(LaterViewModel.class);
         View root = inflater.inflate(R.layout.fragment_later, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        laterViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

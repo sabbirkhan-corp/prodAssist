@@ -16,15 +16,15 @@ import com.sabbirunix.prodassist.R;
 
 public class StatsFragment extends Fragment {
 
-    private StatsViewModel notificationsViewModel;
+    private StatsViewModel statsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
+        statsViewModel =
                 new ViewModelProvider(this).get(StatsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_stats, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        statsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

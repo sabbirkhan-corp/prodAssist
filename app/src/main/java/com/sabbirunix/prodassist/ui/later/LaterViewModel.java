@@ -10,7 +10,7 @@ public class LaterViewModel extends ViewModel {
 
     public LaterViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is later fragment");
     }
 
     public LiveData<String> getText() {

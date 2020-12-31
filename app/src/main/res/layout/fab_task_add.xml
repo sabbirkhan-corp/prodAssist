@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fab_constrain"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,7 +15,6 @@
         android:layout_marginBottom="24dp"
         android:background="#8C5B5B"
         android:clickable="true"
-        android:visibility="invisible"
         app:backgroundTint="#DDDDDA"
         app:layout_constraintBottom_toTopOf="@+id/fab_project"
         app:layout_constraintEnd_toEndOf="@+id/fab_project"
@@ -28,7 +28,6 @@
         android:layout_marginBottom="24dp"
         android:background="#8C5B5B"
         android:clickable="true"
-        android:visibility="invisible"
         app:backgroundTint="#DDDDDA"
         app:layout_constraintBottom_toTopOf="@+id/fab_todo"
         app:layout_constraintEnd_toEndOf="@+id/fab_todo"
@@ -42,7 +41,6 @@
         android:layout_marginBottom="24dp"
         android:background="#8C5B5B"
         android:clickable="true"
-        android:visibility="invisible"
         app:backgroundTint="#DDDDDA"
         app:layout_constraintBottom_toTopOf="@+id/fab_main"
         app:layout_constraintEnd_toEndOf="@+id/fab_main"

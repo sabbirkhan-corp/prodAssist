@@ -1,4 +1,4 @@
-package com.sabbirunix.bottomproductivity.ui.stats;
+package com.sabbirunix.prodassist.ui.stats;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,4 +1,4 @@
-package com.sabbirunix.bottomproductivity;
+package com.sabbirunix.prodassist;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.sabbirunix.bottomproductivity", appContext.getPackageName());
+        assertEquals("com.sabbirunix.prodassist", appContext.getPackageName());
     }
 }

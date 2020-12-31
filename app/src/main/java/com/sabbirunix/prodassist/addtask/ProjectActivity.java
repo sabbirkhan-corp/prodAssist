@@ -1,10 +1,10 @@
-package com.sabbirunix.bottomproductivity.addtask;
+package com.sabbirunix.prodassist.addtask;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.sabbirunix.bottomproductivity.R;
+import com.sabbirunix.prodassist.R;
 
 public class ProjectActivity extends AppCompatActivity {
 

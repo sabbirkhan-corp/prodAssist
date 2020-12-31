@@ -1,4 +1,4 @@
-package com.sabbirunix.bottomproductivity.ui.stats;
+package com.sabbirunix.prodassist.ui.today;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,19 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.sabbirunix.bottomproductivity.R;
+import com.sabbirunix.prodassist.R;
 
-public class StatsFragment extends Fragment {
+public class TodayFragment extends Fragment {
 
-    private StatsViewModel notificationsViewModel;
+    private TodayViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(StatsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_stats, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        homeViewModel =
+                new ViewModelProvider(this).get(TodayViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_today, container, false);
+        final TextView textView = root.findViewById(R.id.text_home);
+        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

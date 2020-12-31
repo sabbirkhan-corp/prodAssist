@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_today"
-        android:name="com.sabbirunix.bottomproductivity.ui.today.TodayFragment"
+        android:name="com.sabbirunix.prodassist.ui.today.TodayFragment"
         android:label="@string/title_today"
         tools:layout="@layout/fragment_today" />
 
     <fragment
         android:id="@+id/navigation_later"
-        android:name="com.sabbirunix.bottomproductivity.ui.later.LaterFragment"
+        android:name="com.sabbirunix.prodassist.ui.later.LaterFragment"
         android:label="@string/title_later"
         tools:layout="@layout/fragment_later" />
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="com.sabbirunix.bottomproductivity.ui.stats.StatsFragment"
+        android:name="com.sabbirunix.prodassist.ui.stats.StatsFragment"
         android:label="@string/title_stats"
         tools:layout="@layout/fragment_stats" />
 </navigation>

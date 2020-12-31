@@ -1,4 +1,4 @@
-package com.sabbirunix.bottomproductivity.ui.later;
+package com.sabbirunix.prodassist.ui.later;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.sabbirunix.bottomproductivity.R;
+import com.sabbirunix.prodassist.R;
 
 public class LaterFragment extends Fragment {
 

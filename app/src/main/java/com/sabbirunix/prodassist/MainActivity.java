@@ -1,4 +1,4 @@
-package com.sabbirunix.bottomproductivity;
+package com.sabbirunix.prodassist;
 
 import android.os.Bundle;
 

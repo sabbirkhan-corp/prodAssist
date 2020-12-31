@@ -1,16 +1,16 @@
-package com.sabbirunix.bottomproductivity.ui.later;
+package com.sabbirunix.prodassist.ui.today;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class LaterViewModel extends ViewModel {
+public class TodayViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public LaterViewModel() {
+    public TodayViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {

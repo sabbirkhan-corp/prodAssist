@@ -12,11 +12,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
 
 public class LaterFragment extends Fragment {
 
     private LaterViewModel laterViewModel;
+
+    FloatingActionButton fabMain, fabRegular, fabProject, fabTodo;
+    /*
+        setting boolean for setting the subFabs invisible at first
+        and only making it visible after checking the onClick state of the boolean
+    */
+    boolean isAllFabsVisible = false;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -24,12 +33,64 @@ public class LaterFragment extends Fragment {
                 new ViewModelProvider(this).get(LaterViewModel.class);
         View root = inflater.inflate(R.layout.fragment_later, container, false);
 //        final TextView textView = root.findViewById(R.id.text_dashboard);
+
+
+        //finding the fabButtons in the fragment
+        fabMain = root.findViewById(R.id.fab_main);
+        fabRegular = root.findViewById(R.id.fab_regular);
+        fabProject = root.findViewById(R.id.fab_project);
+        fabTodo = root.findViewById(R.id.fab_todo);
+
+        //setting the views visibility to gone
+        fabTodo.setVisibility(View.GONE);  //using setVisibility requires restricted api
+        fabProject.setVisibility(View.GONE);
+        fabRegular.setVisibility(View.GONE);
+
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!isAllFabsVisible) {
+                    // when isAllFabsVisible becomes
+                    // true make all the action name
+                    // texts and FABs VISIBLE.
+                    fabRegular.show();
+                    fabProject.show();
+                    fabTodo.show();
+//                    addAlarmActionText.setVisibility(View.VISIBLE);
+//                    addPersonActionText.setVisibility(View.VISIBLE);
+
+                    // make the boolean variable true as
+                    // we have set the sub FABs
+                    // visibility to GONE
+                    isAllFabsVisible = true;
+                } else {
+                    // when isAllFabsVisible becomes
+                    // true make all the action name
+                    // texts and FABs GONE.
+                    fabRegular.hide();
+                    fabProject.hide();
+                    fabTodo.hide();
+//                    addAlarmActionText.setVisibility(View.GONE);
+//                    addPersonActionText.setVisibility(View.GONE);
+
+                    // make the boolean variable false
+                    // as we have set the sub FABs
+                    // visibility to GONE
+                    isAllFabsVisible = false;
+                }
+            }
+        });
+
+
+/*
         laterViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 //                textView.setText(s);
             }
         });
+*/
         return root;
     }
 }

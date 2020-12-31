@@ -27,7 +27,7 @@ public class TodayFragment extends Fragment {
         setting boolean for setting the subFabs invisible at first
         and only making it visible after checking the onClick state of the boolean
     */
-    boolean isFabMainOpen = false;
+    boolean isAllFabsVisible = false;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,14 +53,41 @@ public class TodayFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if (!isAllFabsVisible) {
+                    // when isAllFabsVisible becomes
+                    // true make all the action name
+                    // texts and FABs VISIBLE.
+                    fabRegular.show();
+                    fabProject.show();
+                    fabTodo.show();
+//                    addAlarmActionText.setVisibility(View.VISIBLE);
+//                    addPersonActionText.setVisibility(View.VISIBLE);
+
+                    // make the boolean variable true as
+                    // we have set the sub FABs
+                    // visibility to GONE
+                    isAllFabsVisible = true;
+                } else {
+                    // when isAllFabsVisible becomes
+                    // true make all the action name
+                    // texts and FABs GONE.
+                    fabRegular.hide();
+                    fabProject.hide();
+                    fabTodo.hide();
+//                    addAlarmActionText.setVisibility(View.GONE);
+//                    addPersonActionText.setVisibility(View.GONE);
+
+                    // make the boolean variable false
+                    // as we have set the sub FABs
+                    // visibility to GONE
+                    isAllFabsVisible = false;
+                }
             }
         });
 
 //        FabHanlder fabHanlder = new FabHanlder();
 //        fabHanlder.onClick(fabMain);
-
-
-/*
+/* //Generated Code
         todayViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -70,33 +97,4 @@ public class TodayFragment extends Fragment {
 */
         return root;
     }
-
-/*
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fab_main:
-                if (isFabMainOpen) {
-                    fabTodo.setVisibility(View.GONE);  //using setVisibility requires restricted api
-                    fabProject.setVisibility(View.GONE);
-                    fabRegular.setVisibility(View.GONE);
-
-                    isFabMainOpen = false;
-                } else {
-                    fabTodo.setVisibility(View.VISIBLE);  //using setVisibility requires restricted api
-                    fabProject.setVisibility(View.VISIBLE);
-                    fabRegular.setVisibility(View.VISIBLE);
-
-                    isFabMainOpen = true;
-                }
-                break;
-            default:
-//                Toast.makeText(getApplicationContext(), "There are some bugs", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-    }
-*/
-
-
 }

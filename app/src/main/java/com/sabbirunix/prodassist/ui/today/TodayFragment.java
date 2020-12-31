@@ -18,7 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
 import com.sabbirunix.prodassist.addtask.FabHandler.FabHanlder;
 
-public class TodayFragment extends Fragment implements View.OnClickListener {
+//public class TodayFragment extends Fragment implements View.OnClickListener {
+public class TodayFragment extends Fragment {
 
     private TodayViewModel todayViewModel;
     FloatingActionButton fabMain, fabRegular, fabProject, fabTodo;
@@ -48,19 +49,29 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         fabProject.setVisibility(View.GONE);
         fabRegular.setVisibility(View.GONE);
 
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 //        FabHanlder fabHanlder = new FabHanlder();
 //        fabHanlder.onClick(fabMain);
 
 
+/*
         todayViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+*/
         return root;
     }
 
+/*
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -85,4 +96,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         }
 
     }
+*/
+
+
 }

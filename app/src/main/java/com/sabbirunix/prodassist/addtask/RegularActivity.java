@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -19,7 +20,8 @@ import com.sabbirunix.prodassist.R;
 public class RegularActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton cancelRegular, okayRegular;
-    private EditText taskName, taskCatagory, taskStart, taskEnd;
+    private EditText taskName, taskCatagory;
+    private TextView taskStart, taskEnd;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
 
@@ -58,6 +60,11 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.okay_regular_add: {
                 Toast.makeText(getApplicationContext(), "Items Added Successfully", Toast.LENGTH_SHORT).show();
+                //clearing text after adding the task
+                taskName.setText("");
+                taskCatagory.setText("");
+                taskStart.setText("");
+                taskEnd.setText("");
             }
             break;
             case R.id.cancel_regular_add: {
@@ -81,7 +88,7 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void selectTime() {
 //        add some code here to call it everytime onclick listener is called
-        final Calendar cldr = Calendar.getInstance();
+        Calendar cldr = Calendar.getInstance();
         int hour = cldr.get(Calendar.HOUR_OF_DAY);
         int minutes = cldr.get(Calendar.MINUTE);
         //time picker Dialog

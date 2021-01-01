@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
@@ -39,7 +41,7 @@ public class TodayFragment extends Fragment {
         todayViewModel =
                 new ViewModelProvider(this).get(TodayViewModel.class);
         View root = inflater.inflate(R.layout.fragment_today, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
 
 
         //Sync with LaterFragment
@@ -128,6 +130,58 @@ public class TodayFragment extends Fragment {
 
 
 
+
+        //finding the recycler view
+        RecyclerView recyclerView = root.findViewById(R.id.today_recyclerview);
+        //setting recylder views layoutmanager
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        String[] t1 = {"From Left 1",
+                "From Left 2",
+                "From Left 3",
+                "From Left 4",
+                "From Left 5",
+                "From Left 6",
+                "From Left 6",
+                "From Left 6",
+                "From Left 7",
+                "From Left 8",
+                "From Left 9",
+                "From Left 10",
+                "From Left 11",
+                "From Left 12",
+                "From Left 13",
+                "From Left 14",
+                "From Left 15",
+                "From Left 16",
+                "From Left 17",
+                "From Left 18",
+                "From Left 19",
+        };
+        String[] t2 = {"From Right 1",
+                "From Right 20",
+                "From Right 30",
+                "From Right 40",
+                "From Right 50",
+                "From Right 60",
+                "From Right 70",
+                "From Right 70",
+                "From Right 60",
+                "From Right 50",
+                "From Right 40",
+                "From Right 30",
+                "From Right 20",
+                "From Right 10",
+                "From Right 9",
+                "From Right 8",
+                "From Right 7",
+                "From Right 7",
+                "From Right 7",
+                "From Right 7",
+                "From Right 7"
+        };
+        //sending the data to the adapter through the constructor of adapter class
+        recyclerView.setAdapter(new TodayAdapter(t1, t2));
 
 
 //        FabHanlder fabHanlder = new FabHanlder();

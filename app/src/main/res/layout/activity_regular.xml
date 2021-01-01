@@ -85,21 +85,19 @@
         app:layout_constraintStart_toStartOf="@+id/task_name_regular"
         app:layout_constraintTop_toBottomOf="@+id/task_name_regular" />
 
-    <EditText
+    <TextView
         android:id="@+id/start_time_edit_regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/edittext_bg"
         android:ems="10"
-        android:focusable="true"
         android:hint="Start Time"
-        android:inputType="time"
         app:layout_constraintEnd_toEndOf="@+id/task_catagory_regular"
         app:layout_constraintStart_toStartOf="@+id/task_catagory_regular"
         app:layout_constraintTop_toBottomOf="@+id/task_catagory_regular" />
 
-    <EditText
+    <TextView
         android:id="@+id/end_time_edit_regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -107,7 +105,6 @@
         android:background="@drawable/edittext_bg"
         android:ems="10"
         android:hint="End Time"
-        android:inputType="time"
         app:layout_constraintEnd_toEndOf="@+id/start_time_edit_regular"
         app:layout_constraintStart_toStartOf="@+id/start_time_edit_regular"
         app:layout_constraintTop_toBottomOf="@+id/start_time_edit_regular" />

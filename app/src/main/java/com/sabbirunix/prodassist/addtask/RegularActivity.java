@@ -24,6 +24,7 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
     private TextView taskStart, taskEnd;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
+    private RegularActivityDatabase regularActivityDatabase;
 
 
     @Override
@@ -53,30 +54,25 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.start_time_edit_regular:
-                selectTime();
+                selectStartTime();
                 break;
             case R.id.end_time_edit_regular:
-                selectTime();
+                selectEndTime();
                 break;
             case R.id.okay_regular_add: {
                 Toast.makeText(getApplicationContext(), "Items Added Successfully", Toast.LENGTH_SHORT).show();
                 //clearing text after adding the task
-                taskName.setText("");
-                taskCatagory.setText("");
-                taskStart.setText("");
-                taskEnd.setText("");
+//                taskName.setText("");
+//                taskCatagory.setText("");
+//                taskStart.setText("");  //maybe this set time to null when taking values
+//                taskEnd.setText("");
+                lastFragmentPop(); //getting back on lastFragment
             }
             break;
             case R.id.cancel_regular_add: {
                 Toast.makeText(getApplicationContext(), "Adding Canceled", Toast.LENGTH_SHORT).show();
+                lastFragmentPop(); //getting back on lastFragment
 
-                //For getting back on the lastFragment
-                //works fine for now, but deprecated in api 28
-                if (getFragmentManager().getBackStackEntryCount() > 0) {
-                    getFragmentManager().popBackStackImmediate();
-                } else {
-                    super.onBackPressed();
-                }
             }
             break;
 
@@ -84,9 +80,18 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    public void lastFragmentPop() {
+        //For getting back on the lastFragment
+        //works fine for now, but deprecated in api 28
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStackImmediate();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void selectTime() {
+    public void selectStartTime() {
 //        add some code here to call it everytime onclick listener is called
         Calendar cldr = Calendar.getInstance();
         int hour = cldr.get(Calendar.HOUR_OF_DAY);
@@ -97,6 +102,23 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                         taskStart.setText(sHour + ":" + sMinute);
+                    }
+                }, hour, minutes, true);
+        timePickerDialog.show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void selectEndTime() {
+//        add some code here to call it everytime onclick listener is called
+        Calendar cldr = Calendar.getInstance();
+        int hour = cldr.get(Calendar.HOUR_OF_DAY);
+        int minutes = cldr.get(Calendar.MINUTE);
+        //time picker Dialog
+        timePickerDialog = new TimePickerDialog(RegularActivity.this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                        taskEnd.setText(sHour + ":" + sMinute);
                     }
                 }, hour, minutes, true);
         timePickerDialog.show();

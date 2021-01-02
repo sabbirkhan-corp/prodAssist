@@ -24,6 +24,8 @@ import com.sabbirunix.prodassist.addtask.ProjectActivity;
 import com.sabbirunix.prodassist.addtask.RegularActivity;
 import com.sabbirunix.prodassist.addtask.TodoActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 //public class TodayFragment extends Fragment implements View.OnClickListener {
 public class TodayFragment extends Fragment {
 
@@ -93,10 +95,6 @@ public class TodayFragment extends Fragment {
         });
 
 
-
-
-
-
         //Handling the userClick on fabRegular
         fabRegular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,9 +124,6 @@ public class TodayFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
 
 
         //finding the recycler view
@@ -183,6 +178,21 @@ public class TodayFragment extends Fragment {
         //sending the data to the adapter through the constructor of adapter class
         recyclerView.setAdapter(new TodayAdapter(t1, t2));
 
+        //To hide the fabButtons when scrolled down
+        //answer link: Do a more through review and find a better code
+//https://stackoverflow.com/questions/32038332/using-google-design-library-how-to-hide-fab-button-on-scroll-down
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NotNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    fabMain.hide();
+                    fabRegular.hide();
+                    fabProject.hide();
+                    fabTodo.hide();
+                } else if (dy < 0)
+                    fabMain.show();
+            }
+        });
 
 //        FabHanlder fabHanlder = new FabHanlder();
 //        fabHanlder.onClick(fabMain);

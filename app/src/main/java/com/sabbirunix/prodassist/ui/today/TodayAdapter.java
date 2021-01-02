@@ -43,6 +43,8 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
 
         if(position%2 ==1) {
             holder.itemView.setBackgroundColor(Color.parseColor("#efefef"));
+        } else {
+            holder.itemView.setBackgroundColor(Color.parseColor("#fefefe"));
         }
     }
 

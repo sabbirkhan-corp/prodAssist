@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toStartOf="@+id/okay_regular_add"
         app:layout_constraintStart_toEndOf="@+id/cancel_regular_add"
         app:layout_constraintTop_toTopOf="@+id/cancel_regular_add"
-        tools:text="Name Of Action" />
+        tools:text="Add Regular Task" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_text_regular" />
 
     <EditText
-        android:id="@+id/task_catagory_regular"
+        android:id="@+id/task_category_regular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -93,9 +93,9 @@
         android:background="@drawable/edittext_bg"
         android:ems="10"
         android:hint="Start Time"
-        app:layout_constraintEnd_toEndOf="@+id/task_catagory_regular"
-        app:layout_constraintStart_toStartOf="@+id/task_catagory_regular"
-        app:layout_constraintTop_toBottomOf="@+id/task_catagory_regular" />
+        app:layout_constraintEnd_toEndOf="@+id/task_category_regular"
+        app:layout_constraintStart_toStartOf="@+id/task_category_regular"
+        app:layout_constraintTop_toBottomOf="@+id/task_category_regular" />
 
     <TextView
         android:id="@+id/end_time_edit_regular"

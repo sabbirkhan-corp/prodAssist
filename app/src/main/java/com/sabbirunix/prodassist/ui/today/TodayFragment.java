@@ -26,6 +26,9 @@ import com.sabbirunix.prodassist.addtask.TodoActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 //public class TodayFragment extends Fragment implements View.OnClickListener {
 public class TodayFragment extends Fragment {
 
@@ -131,50 +134,10 @@ public class TodayFragment extends Fragment {
         //setting recylder views layoutmanager
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        String[] t1 = {"From Left 1",
-                "From Left 2",
-                "From Left 3",
-                "From Left 4",
-                "From Left 5",
-                "From Left 6",
-                "From Left 6",
-                "From Left 6",
-                "From Left 7",
-                "From Left 8",
-                "From Left 9",
-                "From Left 10",
-                "From Left 11",
-                "From Left 12",
-                "From Left 13",
-                "From Left 14",
-                "From Left 15",
-                "From Left 16",
-                "From Left 17",
-                "From Left 18",
-                "From Left 19",
-        };
-        String[] t2 = {"From Right 1",
-                "From Right 20",
-                "From Right 30",
-                "From Right 40",
-                "From Right 50",
-                "From Right 60",
-                "From Right 70",
-                "From Right 70",
-                "From Right 60",
-                "From Right 50",
-                "From Right 40",
-                "From Right 30",
-                "From Right 20",
-                "From Right 10",
-                "From Right 9",
-                "From Right 8",
-                "From Right 7",
-                "From Right 7",
-                "From Right 7",
-                "From Right 7",
-                "From Right 7"
-        };
+        String[] t1 = new String[30];
+        String[] t2 = new String[30];
+        Arrays.fill(t1, "07:00");
+        Arrays.fill(t2, "wake up ");
         //sending the data to the adapter through the constructor of adapter class
         recyclerView.setAdapter(new TodayAdapter(t1, t2));
 

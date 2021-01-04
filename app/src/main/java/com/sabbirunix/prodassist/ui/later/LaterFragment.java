@@ -24,6 +24,11 @@ import com.sabbirunix.prodassist.addtask.TodoActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+
 public class LaterFragment extends Fragment {
 
     private LaterViewModel laterViewModel;
@@ -65,31 +70,15 @@ public class LaterFragment extends Fragment {
 //        StringBuilder[] dateLater = new StringBuilder;
 //        StringBuilder[] timeLater = new StringBuilder;
 //        StringBuilder[] nameLater = new StringBuilder;
-        String[] timeLater = {
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-        };
-        String[] nameLater = {
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-
-        };
-        String[] dateLater = {
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-                "one", "two", "three", "four", "five", "NEWLINE",
-        };
-
+        String[] timeLater = new String[30];
+        String[] nameLater = new String[30];
+        String[] dateLater = new String[30];
+        Arrays.fill(timeLater, "9:30");
+        Arrays.fill(nameLater, "Go to work");
+        Arrays.fill(dateLater, "03, Feb");
 
 
         recyclerView.setAdapter(new LaterAdapter(timeLater, nameLater, dateLater));
-
-
 
 
         fabMain.setOnClickListener(new View.OnClickListener() {
@@ -129,10 +118,6 @@ public class LaterFragment extends Fragment {
         });
 
 
-
-
-
-
         //Handling the userClick on fabRegular
         fabRegular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,10 +147,6 @@ public class LaterFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
-
 
 
 

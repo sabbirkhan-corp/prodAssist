@@ -60,20 +60,23 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                 selectEndTime();
                 break;
             case R.id.okay_regular_add: {
-//                Toast.makeText(getApplicationContext(), "Items Added Successfully", Toast.LENGTH_SHORT).show();
-                RegularActivityDatabase regDB = new RegularActivityDatabase(RegularActivity.this);
-                regDB.insertRegularTask(
-                        taskName.getText().toString().trim(),
-                        taskCategory.getText().toString().trim(),
-                        taskStart.getText().toString().trim(),
-                        taskEnd.getText().toString().trim()
-                );
-                //clearing text after adding the task
-//                taskName.setText("");
-//                taskCatagory.setText("");
-//                taskStart.setText("");  //maybe this set time to null when taking values
-//                taskEnd.setText("");
-                lastFragmentPop(); //getting back on lastFragment
+                //for setting warning and handling the FormatError in DB
+                if (taskName.getText().toString().isEmpty()) {
+                    taskName.setError("Give a name");
+                } else if (taskCategory.getText().toString().matches("")) {
+                    taskCategory.setText("random");
+                } else if (taskStart.getText().toString().isEmpty()) {
+                    taskStart.setError("Choose a time");
+                } else {
+                    RegularActivityDatabase regDB = new RegularActivityDatabase(RegularActivity.this);
+                    regDB.insertRegularTask(
+                            taskName.getText().toString().trim(),
+                            taskCategory.getText().toString().trim(),
+                            taskStart.getText().toString().trim(),
+                            taskEnd.getText().toString().trim()
+                    );
+                    lastFragmentPop(); //getting back on lastFragment
+                }
             }
             break;
             case R.id.cancel_regular_add: {
@@ -99,7 +102,6 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void selectStartTime() {
-//        add some code here to call it everytime onclick listener is called
         Calendar cldr = Calendar.getInstance();
         int hour = cldr.get(Calendar.HOUR_OF_DAY);
         int minutes = cldr.get(Calendar.MINUTE);
@@ -110,13 +112,12 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                         taskStart.setText(sHour + ":" + sMinute);
                     }
-                }, hour, minutes, true);
+                }, hour, minutes, false);
         timePickerDialog.show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void selectEndTime() {
-//        add some code here to call it everytime onclick listener is called
         Calendar cldr = Calendar.getInstance();
         int hour = cldr.get(Calendar.HOUR_OF_DAY);
         int minutes = cldr.get(Calendar.MINUTE);

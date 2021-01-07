@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomProductivity">
-        <activity android:name="com.sabbirunix.prodassist.addtask.RegularActivity"></activity>
-        <activity android:name="com.sabbirunix.prodassist.addtask.ProjectActivity" />
-        <activity android:name="com.sabbirunix.prodassist.addtask.TodoActivity" />
+        <activity android:name=".addtask.RegularActivityUpdate" />
+        <activity android:name=".addtask.RegularActivity" />
+        <activity android:name=".addtask.ProjectActivity" />
+        <activity android:name=".addtask.TodoActivity" />
         <activity
-            android:name="com.sabbirunix.prodassist.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

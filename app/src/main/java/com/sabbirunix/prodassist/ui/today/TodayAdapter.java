@@ -2,6 +2,7 @@ package com.sabbirunix.prodassist.ui.today;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sabbirunix.prodassist.R;
+import com.sabbirunix.prodassist.addtask.RegularActivityUpdate;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,7 @@ import static android.content.ContentValues.TAG;
 public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> {
 
     Context context;
-    ArrayList<String> textTimeToday, textNameToday;
+    ArrayList<String> textTimeToday, textNameToday, textID;
 
     public Activity activity;
     public Animation translate_anim;
@@ -57,8 +59,19 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
     @Override
     public void onBindViewHolder(@NonNull TodoHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: inside onBindViewHolder");
+        holder.idText.setText(String.valueOf(textID.get(position)));
         holder.timeTodayText.setText(String.valueOf(textTimeToday.get(position)));
         holder.nameTodayText.setText(String.valueOf(textNameToday.get(position)));
+        holder.today_single.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RegularActivityUpdate.class);
+                intent.putExtra("id", String.valueOf(textID.get(position)));
+                intent.putExtra("kTime", String.valueOf(textTimeToday.get(position)));
+                intent.putExtra("kName", String.valueOf(textNameToday.get(position)));
+                context.startActivity(intent);
+            }
+        });
 
         if (position % 2 == 1) {
             holder.itemView.setBackgroundColor(Color.parseColor("#efefef"));
@@ -90,7 +103,7 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
     }
 
     public class TodoHolder extends RecyclerView.ViewHolder {
-        TextView timeTodayText, nameTodayText;
+        TextView idText, timeTodayText, nameTodayText;
         ConstraintLayout today_single;
 
         public TodoHolder(@NonNull View itemView) {

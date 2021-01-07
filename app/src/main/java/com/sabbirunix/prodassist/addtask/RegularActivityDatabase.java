@@ -92,4 +92,20 @@ public class RegularActivityDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+
+    //methods for updating the data upon click on recyclerView
+    void updateData(String row_id, String startTime, String taskName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_START_TIME, startTime);
+        cv.put(KEY_NAME, taskName);
+
+        long result = db.update(TABLE_NAME, cv, "id=?", new String[]{row_id});
+        if (result == -1) {
+            Toast.makeText(context, "Failed to Update", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Successfully Updated", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

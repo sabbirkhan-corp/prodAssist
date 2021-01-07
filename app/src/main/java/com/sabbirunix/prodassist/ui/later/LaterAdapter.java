@@ -1,12 +1,17 @@
 package com.sabbirunix.prodassist.ui.later;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sabbirunix.prodassist.R;
@@ -20,6 +25,10 @@ public class LaterAdapter extends RecyclerView.Adapter<LaterAdapter.LaterHolder>
     String[] nameLater;
     String[] dateLater;
 
+//    Context context;
+//    public Activity activity;
+//    public Animation translate_anim;
+//
     public LaterAdapter(String[] timeLater, String[] nameLater, String[] dateLater) {
         this.timeLater = timeLater;
         this.nameLater = nameLater;
@@ -62,11 +71,17 @@ public class LaterAdapter extends RecyclerView.Adapter<LaterAdapter.LaterHolder>
     **/
     public class LaterHolder extends RecyclerView.ViewHolder {
         TextView timeLaterText, nameLaterText, dateLaterText;
+//        ConstraintLayout later_single;
+
         public LaterHolder(@NonNull View itemView) {
             super(itemView);
             timeLaterText = itemView.findViewById(R.id.time_today_text);
             nameLaterText = itemView.findViewById(R.id.name_today_text);
             dateLaterText = itemView.findViewById(R.id.date_today_text);
+//            later_single = itemView.findViewById(R.id.later_single_row);
+//            //Animating recyclerView
+//            translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
+//            later_single.setAnimation(translate_anim);
         }
     }
 }

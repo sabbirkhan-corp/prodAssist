@@ -79,7 +79,8 @@ public class RegularActivityDatabase extends SQLiteOpenHelper {
 
     //methods to fetch all regular tasks from the database
     public Cursor readRegularTask() {
-        String query = "SELECT * FROM " + TABLE_NAME ;
+//        String query = "SELECT * FROM " + TABLE_NAME ;
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " +KEY_START_TIME;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;

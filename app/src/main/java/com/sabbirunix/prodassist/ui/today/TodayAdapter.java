@@ -1,14 +1,18 @@
 package com.sabbirunix.prodassist.ui.today;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sabbirunix.prodassist.R;
@@ -21,6 +25,9 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
 
     Context context;
     ArrayList<String> textTimeToday, textNameToday;
+
+    public Activity activity;
+    public Animation translate_anim;
 
     public TodayAdapter(Context context, ArrayList<String> textTimeToday, ArrayList<String> textNameToday) {
         this.context = context;
@@ -84,6 +91,7 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
 
     public class TodoHolder extends RecyclerView.ViewHolder {
         TextView timeTodayText, nameTodayText;
+        ConstraintLayout today_single;
 
         public TodoHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +99,10 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
 
             timeTodayText = itemView.findViewById(R.id.time_today_text);
             nameTodayText = itemView.findViewById(R.id.name_today_text);
+            today_single = itemView.findViewById(R.id.today_single);
+            //Animating recyclerView
+            translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
+            today_single.setAnimation(translate_anim);
         }
     }
 }

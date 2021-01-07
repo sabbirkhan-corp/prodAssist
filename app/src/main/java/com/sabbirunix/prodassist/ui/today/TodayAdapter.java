@@ -1,5 +1,6 @@
 package com.sabbirunix.prodassist.ui.today;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sabbirunix.prodassist.R;
 
+import java.util.ArrayList;
+
 import static android.content.ContentValues.TAG;
 
 public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> {
 
-    String [] timeToday;
-    String [] nameToday;
+    Context context;
+    ArrayList<String> textTimeToday, textNameToday;
+
+    public TodayAdapter(Context context, ArrayList<String> textTimeToday, ArrayList<String> textNameToday) {
+        this.context = context;
+        this.textTimeToday = textTimeToday;
+        this.textNameToday = textNameToday;
+    }
+
+    String[] timeToday;
+    String[] nameToday;
 
     public TodayAdapter(String[] timeToday, String[] nameToday) {
         Log.d(TAG, "TodayAdapter: inside AdapterConstructor");
@@ -38,24 +50,41 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
     @Override
     public void onBindViewHolder(@NonNull TodoHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: inside onBindViewHolder");
-        holder.timeTodayText.setText(timeToday[position]);
-        holder.nameTodayText.setText(nameToday[position]);
+        holder.timeTodayText.setText(String.valueOf(textTimeToday.get(position)));
+        holder.nameTodayText.setText(String.valueOf(textNameToday.get(position)));
 
-        if(position%2 ==1) {
+        if (position % 2 == 1) {
             holder.itemView.setBackgroundColor(Color.parseColor("#efefef"));
         } else {
             holder.itemView.setBackgroundColor(Color.parseColor("#fefefe"));
         }
     }
 
+/*
+    @Override
+    public void onBindViewHolder(@NonNull TodoHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: inside onBindViewHolder");
+        holder.timeTodayText.setText(timeToday[position]);
+        holder.nameTodayText.setText(nameToday[position]);
+
+        if (position % 2 == 1) {
+            holder.itemView.setBackgroundColor(Color.parseColor("#efefef"));
+        } else {
+            holder.itemView.setBackgroundColor(Color.parseColor("#fefefe"));
+        }
+    }
+*/
+
     @Override
     public int getItemCount() {
         Log.d(TAG, "getItemCount: inside getItemCount");
-        return timeToday.length;
+//        return timeToday.length;
+        return textTimeToday.size();
     }
 
     public class TodoHolder extends RecyclerView.ViewHolder {
         TextView timeTodayText, nameTodayText;
+
         public TodoHolder(@NonNull View itemView) {
             super(itemView);
             Log.d(TAG, "TodoHolder: inside ViewHolder extender");

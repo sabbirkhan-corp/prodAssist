@@ -2,6 +2,7 @@ package com.sabbirunix.prodassist.addtask;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class RegularActivityDatabase extends SQLiteOpenHelper {
                         + "("
                         + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + KEY_NAME + " TEXT NOT NULL, "
-                        + KEY_CATEGORY + " TEXT DEFAULT 'random' , "
+                        + KEY_CATEGORY + " TEXT  DEFAULT 'random' , "
                         + KEY_START_TIME + " TEXT NOT NULL, "
                         + KEY_END_TIME + " TEXT"
                         + ")";
@@ -73,6 +74,21 @@ public class RegularActivityDatabase extends SQLiteOpenHelper {
         initialValues.put("date_created", dateFormat.format(date));
         long rowId = mDb.insert(DATABASE_TABLE, null, initialValues);
 */
+    }
+
+
+    //methods to fetch all regular tasks from the database
+    public Cursor readRegularTask() {
+        String query = "SELECT * FROM " + TABLE_NAME ;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        //don't be stupid like me and check the `db !== null` ; `NOT cursor!=null`
+        //spend 10+ hours for this stupidity
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
     }
 
 }

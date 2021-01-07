@@ -1,37 +1,36 @@
 package com.sabbirunix.prodassist.ui.today;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
-import com.sabbirunix.prodassist.addtask.FabHandler.FabHanlder;
 import com.sabbirunix.prodassist.addtask.ProjectActivity;
 import com.sabbirunix.prodassist.addtask.RegularActivity;
+import com.sabbirunix.prodassist.addtask.RegularActivityDatabase;
 import com.sabbirunix.prodassist.addtask.TodoActivity;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 //public class TodayFragment extends Fragment implements View.OnClickListener {
 public class TodayFragment extends Fragment {
 
+    public RegularActivityDatabase regularActDB;
+    public ArrayList<String> timeText, nameText;
+    public TodayAdapter todayAdapter;
     private TodayViewModel todayViewModel;
     FloatingActionButton fabMain, fabRegular, fabProject, fabTodo;
     /*
@@ -129,17 +128,26 @@ public class TodayFragment extends Fragment {
         });
 
 
+        regularActDB = new RegularActivityDatabase(getContext());
+        timeText = new ArrayList<>();
+        nameText = new ArrayList<>();
+
+
         //finding the recycler view
         RecyclerView recyclerView = root.findViewById(R.id.today_recyclerview);
         //setting recylder views layoutmanager
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        String[] t1 = new String[30];
-        String[] t2 = new String[30];
-        Arrays.fill(t1, "07:00");
-        Arrays.fill(t2, "wake up ");
+//        String[] t1 = new String[30];
+//        String[] t2 = new String[30];
+//        Arrays.fill(t1, "07:00");
+//        Arrays.fill(t2, "wake up ");
         //sending the data to the adapter through the constructor of adapter class
-        recyclerView.setAdapter(new TodayAdapter(t1, t2));
+//        recyclerView.setAdapter(new TodayAdapter(t1, t2));
+        displayRegularTask();
+        todayAdapter = new TodayAdapter(getContext(), timeText, nameText);
+        recyclerView.setAdapter(todayAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //To hide the fabButtons when scrolled down
         //answer link: Do a more through review and find a better code
@@ -168,5 +176,17 @@ public class TodayFragment extends Fragment {
         });
 */
         return root;
+    }
+
+    void displayRegularTask() {
+        Cursor cursor = regularActDB.readRegularTask();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+        } else {
+            while (cursor.moveToNext()) {
+                nameText.add(cursor.getString(1)); //getting startTime
+                timeText.add(cursor.getString(3)); //getting taskName
+            }
+        }
     }
 }

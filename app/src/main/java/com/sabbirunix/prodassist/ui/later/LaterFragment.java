@@ -13,8 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
@@ -65,6 +67,8 @@ public class LaterFragment extends Fragment {
         //declaring and finding the reyclerView from the later_frags_xml
         RecyclerView recyclerView = root.findViewById(R.id.later_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+//        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.HORIZONTAL));
 
         //getting the time, name, date from the users and adding it to the users
 //        StringBuilder[] dateLater = new StringBuilder;

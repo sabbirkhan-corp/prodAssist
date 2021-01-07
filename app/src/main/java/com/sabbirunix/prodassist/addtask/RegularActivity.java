@@ -63,10 +63,12 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                 //for setting warning and handling the FormatError in DB
                 if (taskName.getText().toString().isEmpty()) {
                     taskName.setError("Give a name");
+                    taskName.requestFocus();
                 } else if (taskCategory.getText().toString().matches("")) {
                     taskCategory.setText("random");
                 } else if (taskStart.getText().toString().isEmpty()) {
                     taskStart.setError("Choose a time");
+                    taskStart.callOnClick(); //potential bug lurks here
                 } else {
                     RegularActivityDatabase regDB = new RegularActivityDatabase(RegularActivity.this);
                     regDB.insertRegularTask(

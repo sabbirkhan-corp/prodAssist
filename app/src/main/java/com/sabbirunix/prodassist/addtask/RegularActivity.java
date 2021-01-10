@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.sabbirunix.prodassist.MainActivity;
 import com.sabbirunix.prodassist.R;
 
 public class RegularActivity extends AppCompatActivity implements View.OnClickListener {
@@ -78,6 +80,9 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                             taskEnd.getText().toString().trim()
                     );
                     lastFragmentPop(); //getting back on lastFragment
+                    Intent intent = new Intent(RegularActivity.this, MainActivity.class);
+                    startActivity(intent);
+
                 }
             }
             break;

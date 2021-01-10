@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_later"
-        android:name="com.sabbirunix.prodassist.ui.later.LaterFragment"
+        android:name="com.sabbirunix.prodassist.ui.notes.NotesFragment"
         android:label="@string/title_later"
-        tools:layout="@layout/fragment_later" />
+        tools:layout="@layout/fragment_notes" />
 
     <fragment
         android:id="@+id/navigation_stats"

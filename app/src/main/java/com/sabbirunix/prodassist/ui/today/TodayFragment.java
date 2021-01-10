@@ -48,7 +48,7 @@ public class TodayFragment extends Fragment {
 //        final TextView textView = root.findViewById(R.id.text_home);
 
 
-        //Sync with LaterFragment
+        //Sync with NotesFragment
         //finding the fabButtons in the fragment
         fabMain = root.findViewById(R.id.fab_main);
         fabRegular = root.findViewById(R.id.fab_regular);

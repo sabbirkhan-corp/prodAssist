@@ -4,4 +4,6 @@
     <string name="title_later">Notes</string>
     <string name="title_stats">Stats</string>
     <string name="delete_item">Delete</string>
+    <string name="empty_note"> No notes found!
+        Please add some note </string>
 </resources>

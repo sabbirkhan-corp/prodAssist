@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="com.sabbirunix.prodassist.ui.stats.StatsFragment"
+        android:name="com.sabbirunix.prodassist.ui.wallet.WalletFragment"
         android:label="@string/title_stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_wallet" />
 </navigation>

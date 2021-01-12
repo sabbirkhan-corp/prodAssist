@@ -1,14 +1,14 @@
-package com.sabbirunix.prodassist.ui.stats;
+package com.sabbirunix.prodassist.ui.wallet;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class StatsViewModel extends ViewModel {
+public class WalletViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public StatsViewModel() {
+    public WalletViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is stats fragment");
     }

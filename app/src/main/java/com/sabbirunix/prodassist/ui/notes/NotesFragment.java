@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -30,6 +32,8 @@ public class NotesFragment extends Fragment {
     NotesDBHelper notesDBHelper;
     ArrayList<String> noteID, noteTitle, noteCategory, noteDetails;
     NotesAdapter notesAdapter;
+    ImageView emptyNotesImg;
+    TextView emptyNotesTxt;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class NotesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_notes, container, false);
 
         fabAddNote = root.findViewById(R.id.fab_add_notes);
+        emptyNotesImg = root.findViewById(R.id.empty_note_img);
+        emptyNotesTxt = root.findViewById(R.id.empty_note_txt);
 
         //declaring and finding the reyclerView from the later_frags_xml
         recyclerViewNote = root.findViewById(R.id.notes_recyclerview);
@@ -51,7 +57,7 @@ public class NotesFragment extends Fragment {
         notesAdapter = new NotesAdapter(getContext(), noteID, noteTitle, noteCategory, noteDetails);
         recyclerViewNote.setAdapter(notesAdapter);
 //        recyclerViewNote.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewNote.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerViewNote.setLayoutManager(new GridLayoutManager(getContext(), 2));
 //        recyclerViewNote.setLayoutManager(new StaggeredGridLayoutManager(2, RecyclerView.HORIZONTAL));
 
 
@@ -80,7 +86,9 @@ public class NotesFragment extends Fragment {
     void displayNotes() {
         Cursor cursor = notesDBHelper.displayNotes();
         if (cursor.getCount() == 0) {
-            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+            emptyNotesImg.setVisibility(View.VISIBLE);
+            emptyNotesTxt.setVisibility(View.VISIBLE);
+//            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
                 noteID.add(cursor.getString(0)); //getting noteID
@@ -88,6 +96,8 @@ public class NotesFragment extends Fragment {
                 noteCategory.add(cursor.getString(2)); //getting noteCategory
                 noteDetails.add(cursor.getString(3)); //getting noteDetails
             }
+            emptyNotesImg.setVisibility(View.GONE);
+            emptyNotesTxt.setVisibility(View.GONE);
         }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sabbirunix.prodassist" >
+    package="com.sabbirunix.prodassist">
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BottomProductivity" >
-        <activity android:name=".ui.notes.NotesUpdateActivity" >
-        </activity>
+        android:theme="@style/Theme.BottomProductivity">
+        <activity android:name=".ui.wallet.WalletUpdateActivity" />
+        <activity android:name=".ui.wallet.WalletAddActivity" />
+        <activity android:name=".ui.notes.NotesUpdateActivity" />
         <activity
             android:name=".ui.notes.NotesAddActivity"
             android:label="Add Notes"
@@ -29,7 +30,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

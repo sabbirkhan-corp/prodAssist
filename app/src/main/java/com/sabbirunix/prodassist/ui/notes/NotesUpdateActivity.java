@@ -1,8 +1,14 @@
 package com.sabbirunix.prodassist.ui.notes;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,26 +38,50 @@ public class NotesUpdateActivity extends AppCompatActivity implements View.OnCli
         //first we call this then anclick update
         getSetIntentData();
 
-        noteUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                notesDBHelper = new NotesDBHelper(NotesUpdateActivity.this);
-                notesDBHelper.updateNote(
-                        id,
-                        noteTitleU.getText().toString(),
-                        noteCategoryU.getText().toString(),
-                        noteDetailsU.getText().toString()
-                );
-                lastFragmentPop(); //getting back on lastFragment
-
-            }
-        });
-
-//        noteUpdate.setOnClickListener(this);
+        noteUpdate.setOnClickListener(this);
         noteCancelU.setOnClickListener(this);
 
     }
 
+    //showing the delete icon in updateNote
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_delete, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_delete:
+                confirmDialog();
+                break;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void confirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete " + title + " ?");
+        builder.setMessage("Are you sure you want to delete " + title + " ?");
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                notesDBHelper = new NotesDBHelper(NotesUpdateActivity.this);
+                notesDBHelper.deleteNote(id);
+                finish();//to finish activity and get back
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //this doesn't do anything //just returns
+            }
+        });
+        builder.create().show(); //to actually show the dialog //pst
+    }
 
     void getSetIntentData() {
         if (getIntent().hasExtra("id") && getIntent().hasExtra("title")
@@ -78,14 +108,19 @@ public class NotesUpdateActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
 
         switch (v.getId()) {
-//            case R.id.note_save_btn_up: {
-//                if (!isTextEmpty()) {
-//                    notesDBHelper = new NotesDBHelper(NotesUpdateActivity.this);
-//                    notesDBHelper.updateNote(id, title, category, details);
-//                    lastFragmentPop(); //getting back on lastFragment
-//                }
-//            }
-//            break;
+            case R.id.note_save_btn_up: {
+                if (!isTextEmpty()) {
+                    notesDBHelper = new NotesDBHelper(NotesUpdateActivity.this);
+                    notesDBHelper.updateNote(
+                            id,
+                            noteTitleU.getText().toString(),
+                            noteCategoryU.getText().toString(),
+                            noteDetailsU.getText().toString()
+                    );
+                    lastFragmentPop(); //getting back on lastFragment
+                }
+            }
+            break;
             case R.id.note_cancel_btn_up:
                 Toast.makeText(getApplicationContext(), "Note not updated", Toast.LENGTH_SHORT).show();
                 lastFragmentPop(); //getting back on lastFragment

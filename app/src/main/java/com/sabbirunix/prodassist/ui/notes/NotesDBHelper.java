@@ -97,4 +97,17 @@ public class NotesDBHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Successfully Added Note", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    //for deleting notes
+    void deleteNote(String row_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if (result == -1) {
+            Toast.makeText(context, "Error deleting note", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Successfully Deleted note", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

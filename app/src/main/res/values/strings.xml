@@ -3,4 +3,5 @@
     <string name="title_today">Tasks</string>
     <string name="title_later">Notes</string>
     <string name="title_stats">Stats</string>
+    <string name="delete_item">Delete</string>
 </resources>

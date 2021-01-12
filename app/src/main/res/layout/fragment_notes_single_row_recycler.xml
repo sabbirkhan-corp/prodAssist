@@ -9,6 +9,7 @@
     android:layout_margin="3dp"
     android:clickable="true"
     android:foregroundTint="#8169A3"
+    android:outlineProvider="bounds"
     app:cardCornerRadius="5dp"
     app:cardElevation="8dp"
     app:cardMaxElevation="15dp">
@@ -27,13 +28,13 @@
             android:layout_marginEnd="24dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/note_display_category"
             app:layout_constraintEnd_toStartOf="@+id/note_display_id"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/note_display_id" />
 
         <TextView
             android:id="@+id/note_display_id"
@@ -42,6 +43,7 @@
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textSize="10sp"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,10 +51,12 @@
             android:id="@+id/note_display_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textSize="10sp"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/note_display_title"

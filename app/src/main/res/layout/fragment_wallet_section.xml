@@ -14,24 +14,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/section_container"
+        android:id="@+id/wallet_section_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/date_text"
+            android:id="@+id/wallet_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/income_expense_text"
-            app:layout_constraintEnd_toStartOf="@+id/income_expense_text"
+            app:layout_constraintBottom_toBottomOf="@+id/wallet_income_expense"
+            app:layout_constraintEnd_toStartOf="@+id/wallet_income_expense"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/income_expense_text" />
+            app:layout_constraintTop_toTopOf="@+id/wallet_income_expense" />
 
         <TextView
-            android:id="@+id/income_expense_text"
+            android:id="@+id/wallet_income_expense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -51,7 +51,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/income_expense_text" />
+            app:layout_constraintTop_toBottomOf="@+id/wallet_income_expense" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

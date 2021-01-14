@@ -17,12 +17,16 @@ import java.util.ArrayList;
 
 public class WalletAdapterChild extends RecyclerView.Adapter<WalletAdapterChild.WalletChildHolder> {
     private Context context;
+    private ArrayList transactionID; //for passing intent data in update activity
+    private ArrayList transactionDate; //for passing intent data in update activity
     private ArrayList transactionTitle;
     private ArrayList transactionCategory;
     private ArrayList transactionAmount;
 
-    public WalletAdapterChild(Context context, ArrayList transactionTitle, ArrayList transactionCategory, ArrayList transactionAmount) {
+    public WalletAdapterChild(Context context, ArrayList transactionID, ArrayList transactionDate, ArrayList transactionTitle, ArrayList transactionCategory, ArrayList transactionAmount) {
         this.context = context;
+        this.transactionID = transactionID;
+        this.transactionDate = transactionDate;
         this.transactionTitle = transactionTitle;
         this.transactionCategory = transactionCategory;
         this.transactionAmount = transactionAmount;
@@ -39,6 +43,8 @@ public class WalletAdapterChild extends RecyclerView.Adapter<WalletAdapterChild.
 
     @Override
     public void onBindViewHolder(@NonNull WalletChildHolder holder, int position) {
+        holder.tsaID.setText(String.valueOf(transactionID.get(position)));
+        holder.tsaDate.setText(String.valueOf(transactionDate.get(position)));
         holder.tsaTitle.setText(String.valueOf(transactionTitle.get(position)));
         holder.tsaCategory.setText(String.valueOf(transactionCategory.get(position)));
         holder.tsaAmount.setText(String.valueOf(transactionAmount.get(position)));
@@ -46,6 +52,8 @@ public class WalletAdapterChild extends RecyclerView.Adapter<WalletAdapterChild.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, WalletUpdateActivity.class);
+                intent.putExtra("wID", String.valueOf(transactionID.get(position))); //for passing intent data in updateWalletActivity
+                intent.putExtra("wDate", String.valueOf(transactionDate.get(position))); //for passing intent data in updateWalletActivity
                 intent.putExtra("wTitle", String.valueOf(transactionTitle.get(position)));
                 intent.putExtra("wCategory", String.valueOf(transactionCategory.get(position)));
                 intent.putExtra("wAmount", String.valueOf(transactionAmount.get(position)));
@@ -61,11 +69,13 @@ public class WalletAdapterChild extends RecyclerView.Adapter<WalletAdapterChild.
 
     public class WalletChildHolder extends RecyclerView.ViewHolder {
         CardView walletCardSingle;
-        TextView tsaTitle, tsaCategory, tsaAmount;
+        TextView tsaID, tsaDate, tsaTitle, tsaCategory, tsaAmount;
 
         public WalletChildHolder(@NonNull View itemView) {
             super(itemView);
             walletCardSingle = itemView.findViewById(R.id.wallet_card_single);
+            tsaID = itemView.findViewById(R.id.transaction_id);
+            tsaDate = itemView.findViewById(R.id.transaction_date);
             tsaTitle = itemView.findViewById(R.id.transaction_title);
             tsaCategory = itemView.findViewById(R.id.transaction_category);
             tsaAmount = itemView.findViewById(R.id.transaction_amount);

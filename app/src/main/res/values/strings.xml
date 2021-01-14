@@ -2,8 +2,8 @@
     <string name="app_name">ProdAssist</string>
     <string name="title_today">Tasks</string>
     <string name="title_later">Notes</string>
-    <string name="title_stats">Stats</string>
+    <string name="title_stats">Wallet</string>
     <string name="delete_item">Delete</string>
-    <string name="empty_note"> No notes found!
-        Please add some note </string>
+    <string name="empty_note"> "No notes found! \nPlease add some note" </string>
+    <string name="empty_wallet"> "Wallet empty! \n Add transaction to track your wallet </string>
 </resources>

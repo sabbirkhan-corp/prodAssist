@@ -1,12 +1,18 @@
 package com.sabbirunix.prodassist.ui.wallet;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -25,6 +31,8 @@ public class WalletUpdateActivity extends AppCompatActivity implements View.OnCl
     TextView exDateU; //ex --> exchange
     EditText exDetailU, exCategoryU, exAmountU;
     Button walletUpdate, walletCancelU;
+    String wID, wDate, wDetails, wCategory, wAmount;
+    WalletDBHelper walletDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +46,76 @@ public class WalletUpdateActivity extends AppCompatActivity implements View.OnCl
         walletUpdate = findViewById(R.id.wallet_update_btn);
         walletCancelU = findViewById(R.id.wallet_cancel_btn_up);
 
+        //first we call this then anclick update
+        getSetIntentData();
+
         exDateU.setOnClickListener(this);
         walletUpdate.setOnClickListener(this);
         walletCancelU.setOnClickListener(this);
     }
+
+    //showing the delete icon in updateNote
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_delete, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_delete:
+                confirmDialog();
+                break;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    void confirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete " + wDetails + " ?");
+        builder.setMessage("Are you sure you want to delete " + wDetails + " ?");
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                walletDBHelper = new WalletDBHelper(WalletUpdateActivity.this);
+                walletDBHelper.deleteWalletItem(wID);
+                finish();//to finish activity and get back
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //this doesn't do anything //just returns
+            }
+        });
+        builder.create().show(); //to actually show the dialog //pst
+    }
+
+    void getSetIntentData() {
+        if (getIntent().hasExtra("wID") && getIntent().hasExtra("wDate") && getIntent().hasExtra("wTitle")
+                && getIntent().hasExtra("wCategory") && getIntent().hasExtra("wAmount")) {
+
+            //Getting data from intent
+            wID = getIntent().getStringExtra("wID");
+            wDate = getIntent().getStringExtra("wDate");
+            wDetails = getIntent().getStringExtra("wTitle");
+            wCategory = getIntent().getStringExtra("wCategory");
+            wAmount = getIntent().getStringExtra("wAmount");
+
+            //setting intent data
+            exDateU.setText(wDate);
+            exDetailU.setText(wDetails);
+            exCategoryU.setText(wCategory);
+            exAmountU.setText(wAmount);
+
+        } else {
+            Toast.makeText(getApplicationContext(), "No Data Found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -53,7 +127,14 @@ public class WalletUpdateActivity extends AppCompatActivity implements View.OnCl
             break;
             case R.id.wallet_update_btn: {
                 if (!isTextEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Updated Wallet", Toast.LENGTH_SHORT).show();
+                    walletDBHelper = new WalletDBHelper(WalletUpdateActivity.this);
+                    walletDBHelper.updateWalletItem(
+                            wID,
+                            exDateU.getText().toString(),
+                            exDetailU.getText().toString(),
+                            exCategoryU.getText().toString(),
+                            Integer.parseInt(exAmountU.getText().toString())
+                    );
                     lastFragmentPop(); //getting back on lastFragment
                 }
             }

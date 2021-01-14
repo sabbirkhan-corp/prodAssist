@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:alpha="0.3"
         android:text="@string/empty_note"
+        android:textAlignment="center"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/empty_note_img"
         app:layout_constraintEnd_toEndOf="parent"

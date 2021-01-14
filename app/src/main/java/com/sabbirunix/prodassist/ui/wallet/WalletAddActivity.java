@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sabbirunix.prodassist.R;
+import com.sabbirunix.prodassist.ui.notes.NotesAddActivity;
+import com.sabbirunix.prodassist.ui.notes.NotesDBHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,7 +55,14 @@ public class WalletAddActivity extends AppCompatActivity implements View.OnClick
             break;
             case R.id.wallet_save_btn: {
                 if (!isTextEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Add Details here bitch", Toast.LENGTH_SHORT).show();
+                    WalletDBHelper walletDBHelper = new WalletDBHelper(WalletAddActivity.this);
+                    walletDBHelper.addToWallet(
+                            exDate.getText().toString(),
+                            exDetail.getText().toString(),
+                            exCategory.getText().toString(),
+                            Integer.parseInt(exAmount.getText().toString())
+                    );
+                    //some random comment
                     lastFragmentPop(); //getting back on lastFragment
                 }
             }

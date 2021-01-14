@@ -7,6 +7,8 @@ import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -41,6 +43,14 @@ public class WalletUpdateActivity extends AppCompatActivity implements View.OnCl
         exDateU.setOnClickListener(this);
         walletUpdate.setOnClickListener(this);
         walletCancelU.setOnClickListener(this);
+    }
+
+    //showing the delete icon in updateNote
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_delete, menu);
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

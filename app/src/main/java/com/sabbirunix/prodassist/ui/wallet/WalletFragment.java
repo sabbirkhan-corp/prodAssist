@@ -11,19 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
-import com.sabbirunix.prodassist.ui.notes.NotesAdapter;
-import com.sabbirunix.prodassist.ui.notes.NotesAddActivity;
-import com.sabbirunix.prodassist.ui.notes.NotesDBHelper;
 
 import java.util.ArrayList;
 
@@ -37,6 +31,8 @@ public class WalletFragment extends Fragment {
     RecyclerView rvWalletMain;
     ImageView emptyWalletImg;
     TextView emptyWalletTxt;
+    //getting sum from wallet to top cardView
+    TextView totalIncome, totalExpense, totalBalance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +43,9 @@ public class WalletFragment extends Fragment {
         fabAddWallet = root.findViewById(R.id.fab_wallet);
         emptyWalletImg = root.findViewById(R.id.empty_wallet_img);
         emptyWalletTxt = root.findViewById(R.id.empty_wallet_txt);
+        totalIncome = root.findViewById(R.id.card_total_income_amount);
+        totalExpense = root.findViewById(R.id.card_total_expense_amount);
+        totalBalance = root.findViewById(R.id.card_total_balance_amount);
 
         rvWalletMain = root.findViewById(R.id.wallet_recyclerview_main);
 
@@ -57,6 +56,7 @@ public class WalletFragment extends Fragment {
         walletCategory = new ArrayList<>();
         walletAmount = new ArrayList<>();
         displayWalletItems();
+        getWalletSum();
 
         walletAdapterChild = new WalletAdapterChild(getContext(), walletID, walletDate, walletDetails, walletCategory, walletAmount);
         rvWalletMain.setAdapter(walletAdapterChild);
@@ -82,6 +82,13 @@ public class WalletFragment extends Fragment {
 //            }
 //        });
         return root;
+    }
+
+    private void getWalletSum() {
+        // ""
+        totalIncome.setText("" + walletDBHelper.getSumIncome());
+        totalExpense.setText("" + walletDBHelper.getSumExpense());
+        totalBalance.setText("" + walletDBHelper.getSumBalance());
     }
 
     void displayWalletItems() {

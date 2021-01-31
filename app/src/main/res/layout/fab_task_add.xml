@@ -69,54 +69,42 @@
         app:layout_constraintVertical_bias="1.0"
         app:rippleColor="@color/design_default_color_primary_dark"
         app:srcCompat="@android:drawable/ic_input_add" />
-    <!--
 
-            <TextView
-                android:id="@+id/text_todo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:background="#435D6A"
-                android:clickable="true"
-                android:text="Todo"
-                android:textColor="#AEEA00"
-                android:textSize="18sp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/fab_todo"
-                app:layout_constraintEnd_toStartOf="@+id/fab_todo"
-                app:layout_constraintTop_toTopOf="@+id/fab_todo" />
+    <TextView
+        android:id="@+id/text_todo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/edittext_bg"
+        android:text="Todo Task"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_todo"
+        app:layout_constraintEnd_toStartOf="@+id/fab_todo"
+        app:layout_constraintTop_toTopOf="@+id/fab_todo" />
 
-            <TextView
-                android:id="@+id/text_project"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:background="#435D6A"
-                android:clickable="true"
-                android:text="Project"
-                android:textColor="#AEEA00"
-                android:textSize="18sp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/fab_project"
-                app:layout_constraintEnd_toStartOf="@+id/fab_project"
-                app:layout_constraintTop_toTopOf="@+id/fab_project" />
+    <TextView
+        android:id="@+id/text_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/edittext_bg"
+        android:text="Project Work"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_project"
+        app:layout_constraintEnd_toStartOf="@+id/fab_project"
+        app:layout_constraintTop_toTopOf="@+id/fab_project" />
 
-            <TextView
-                android:id="@+id/text_regular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:background="#435D6A"
-                android:clickable="true"
-                android:text="Regular"
-                android:textColor="#AEEA00"
-                android:textSize="18sp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/fab_regular"
-                app:layout_constraintEnd_toStartOf="@+id/fab_regular"
-                app:layout_constraintTop_toTopOf="@+id/fab_regular" />
-
-    -->
+    <TextView
+        android:id="@+id/text_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/edittext_bg"
+        android:text="Regular Task"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_regular"
+        app:layout_constraintEnd_toStartOf="@+id/fab_regular"
+        app:layout_constraintTop_toTopOf="@+id/fab_regular" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

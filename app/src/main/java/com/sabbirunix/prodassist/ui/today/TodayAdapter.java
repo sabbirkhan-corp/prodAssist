@@ -59,12 +59,6 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodoHolder> 
         Log.d(TAG, "onBindViewHolder: inside onBindViewHolder");
         holder.timeTodayText.setText(String.valueOf(textTimeToday.get(position)));
         holder.nameTodayText.setText(String.valueOf(textNameToday.get(position)));
-
-        if (position % 2 == 1) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#efefef"));
-        } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#fefefe"));
-        }
     }
 
 /*

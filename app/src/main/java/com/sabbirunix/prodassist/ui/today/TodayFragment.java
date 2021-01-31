@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class TodayFragment extends Fragment {
     public ArrayList<String> timeText, nameText;
     public TodayAdapter todayAdapter;
     private TodayViewModel todayViewModel;
+    TextView textTodo, textProject, textRegular;
     FloatingActionButton fabMain, fabRegular, fabProject, fabTodo;
     /*
         setting boolean for setting the subFabs invisible at first
@@ -54,11 +56,17 @@ public class TodayFragment extends Fragment {
         fabRegular = root.findViewById(R.id.fab_regular);
         fabProject = root.findViewById(R.id.fab_project);
         fabTodo = root.findViewById(R.id.fab_todo);
+        textTodo = root.findViewById(R.id.text_todo);
+        textProject = root.findViewById(R.id.text_project);
+        textRegular = root.findViewById(R.id.text_regular);
 
         //setting the views visibility to gone
         fabTodo.setVisibility(View.GONE);  //using setVisibility requires restricted api
         fabProject.setVisibility(View.GONE);
         fabRegular.setVisibility(View.GONE);
+        textTodo.setVisibility(View.GONE);
+        textProject.setVisibility(View.GONE);
+        textRegular.setVisibility(View.GONE);
 
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +79,9 @@ public class TodayFragment extends Fragment {
                     fabRegular.show();
                     fabProject.show();
                     fabTodo.show();
-//                    addAlarmActionText.setVisibility(View.VISIBLE);
-//                    addPersonActionText.setVisibility(View.VISIBLE);
+                    textTodo.setVisibility(View.VISIBLE);
+                    textProject.setVisibility(View.VISIBLE);
+                    textRegular.setVisibility(View.VISIBLE);
 
                     // make the boolean variable true as
                     // we have set the sub FABs
@@ -85,8 +94,9 @@ public class TodayFragment extends Fragment {
                     fabRegular.hide();
                     fabProject.hide();
                     fabTodo.hide();
-//                    addAlarmActionText.setVisibility(View.GONE);
-//                    addPersonActionText.setVisibility(View.GONE);
+                    textTodo.setVisibility(View.GONE);
+                    textProject.setVisibility(View.GONE);
+                    textRegular.setVisibility(View.GONE);
 
                     // make the boolean variable false
                     // as we have set the sub FABs
@@ -101,7 +111,6 @@ public class TodayFragment extends Fragment {
         fabRegular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Tapped on fabRegular", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), RegularActivity.class);
                 startActivity(intent);
             }
@@ -111,7 +120,6 @@ public class TodayFragment extends Fragment {
         fabProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Tapped on fabProject", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), ProjectActivity.class);
                 startActivity(intent);
             }
@@ -121,7 +129,6 @@ public class TodayFragment extends Fragment {
         fabTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Tapped on fabTodo", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), TodoActivity.class);
                 startActivity(intent);
             }

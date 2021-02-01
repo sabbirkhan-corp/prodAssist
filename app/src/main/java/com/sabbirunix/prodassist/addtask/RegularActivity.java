@@ -23,7 +23,7 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
 
     private ImageButton cancelRegular, okayRegular;
     private EditText taskName, taskCategory;
-    private TextView taskStart, taskEnd;
+    private TextView taskDate, taskStart, taskEnd; //taskDate only used for db compatibility
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
     private RegularActivityDatabase regularActivityDatabase;
@@ -76,6 +76,7 @@ public class RegularActivity extends AppCompatActivity implements View.OnClickLi
                     regDB.insertRegularTask(
                             taskName.getText().toString().trim(),
                             taskCategory.getText().toString().trim(),
+                            taskDate.getText().toString().trim(),
                             taskStart.getText().toString().trim(),
                             taskEnd.getText().toString().trim()
                     );

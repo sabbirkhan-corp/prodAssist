@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomProductivity">
+        <activity android:name=".addtask.TodoUpdateActivity"></activity>
         <activity android:name=".ui.wallet.WalletUpdateActivity" />
         <activity android:name=".ui.wallet.WalletAddActivity" />
         <activity android:name=".ui.notes.NotesUpdateActivity" />

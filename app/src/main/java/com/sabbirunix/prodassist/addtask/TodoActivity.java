@@ -26,15 +26,10 @@ import java.util.Date;
 import java.util.Locale;
 
 public class TodoActivity extends AppCompatActivity implements View.OnClickListener {
-
     private ImageButton cancelTodo, okayTodo;
     private Button todoSave, todoCancel;
     private EditText taskName, taskCategory;
     private TextView taskDate, taskStart, taskEnd;
-    private DatePickerDialog datePickerDialog;
-    private TimePickerDialog timePickerDialog;
-    private RegularActivityDatabase regularActivityDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +83,7 @@ public class TodoActivity extends AppCompatActivity implements View.OnClickListe
                     regDB.insertRegularTask(
                             taskName.getText().toString().trim(),
                             taskCategory.getText().toString().trim(),
+                            taskDate.getText().toString().trim(),
                             taskStart.getText().toString().trim(),
                             taskEnd.getText().toString().trim()
                     );
@@ -159,7 +155,7 @@ public class TodoActivity extends AppCompatActivity implements View.OnClickListe
         int minutes = cal.get(Calendar.MINUTE);
         int amPm = cal.get(Calendar.AM_PM);
         //time picker Dialog
-        timePickerDialog = new TimePickerDialog(TodoActivity.this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(TodoActivity.this,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
@@ -181,7 +177,7 @@ public class TodoActivity extends AppCompatActivity implements View.OnClickListe
         int hour = cldr.get(Calendar.HOUR_OF_DAY);
         int minutes = cldr.get(Calendar.MINUTE);
         //time picker Dialog
-        timePickerDialog = new TimePickerDialog(TodoActivity.this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(TodoActivity.this,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {

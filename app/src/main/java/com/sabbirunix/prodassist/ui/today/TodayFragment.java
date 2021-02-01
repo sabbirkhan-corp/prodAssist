@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class TodayFragment extends Fragment {
 
     public RegularActivityDatabase regularActDB;
-    public ArrayList<String> timeText, nameText;
+    public ArrayList<String> idTxt, nameTxt, categoryTxt, dateTxt, startTxt, endTxt;
     public TodayAdapter todayAdapter;
     private TodayViewModel todayViewModel;
     TextView textTodo, textProject, textRegular;
@@ -73,34 +73,20 @@ public class TodayFragment extends Fragment {
             public void onClick(View v) {
 
                 if (!isAllFabsVisible) {
-                    // when isAllFabsVisible becomes
-                    // true make all the action name
-                    // texts and FABs VISIBLE.
                     fabRegular.show();
                     fabProject.show();
                     fabTodo.show();
                     textTodo.setVisibility(View.VISIBLE);
                     textProject.setVisibility(View.VISIBLE);
                     textRegular.setVisibility(View.VISIBLE);
-
-                    // make the boolean variable true as
-                    // we have set the sub FABs
-                    // visibility to GONE
                     isAllFabsVisible = true;
                 } else {
-                    // when isAllFabsVisible becomes
-                    // true make all the action name
-                    // texts and FABs GONE.
                     fabRegular.hide();
                     fabProject.hide();
                     fabTodo.hide();
                     textTodo.setVisibility(View.GONE);
                     textProject.setVisibility(View.GONE);
                     textRegular.setVisibility(View.GONE);
-
-                    // make the boolean variable false
-                    // as we have set the sub FABs
-                    // visibility to GONE
                     isAllFabsVisible = false;
                 }
             }
@@ -136,23 +122,19 @@ public class TodayFragment extends Fragment {
 
 
         regularActDB = new RegularActivityDatabase(getContext());
-        timeText = new ArrayList<>();
-        nameText = new ArrayList<>();
+        idTxt = new ArrayList<>();
+        nameTxt = new ArrayList<>();
+        categoryTxt = new ArrayList<>();
+        dateTxt = new ArrayList<>();
+        startTxt = new ArrayList<>();
+        endTxt = new ArrayList<>();
 
 
         //finding the recycler view
         RecyclerView recyclerView = root.findViewById(R.id.today_recyclerview);
-        //setting recylder views layoutmanager
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        String[] t1 = new String[30];
-//        String[] t2 = new String[30];
-//        Arrays.fill(t1, "07:00");
-//        Arrays.fill(t2, "wake up ");
-        //sending the data to the adapter through the constructor of adapter class
-//        recyclerView.setAdapter(new TodayAdapter(t1, t2));
         displayRegularTask();
-        todayAdapter = new TodayAdapter(getContext(), timeText, nameText);
+        todayAdapter = new TodayAdapter(getContext(), idTxt, nameTxt, categoryTxt, dateTxt, startTxt, endTxt);
         recyclerView.setAdapter(todayAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -171,17 +153,6 @@ public class TodayFragment extends Fragment {
                     fabMain.show();
             }
         });
-
-//        FabHanlder fabHanlder = new FabHanlder();
-//        fabHanlder.onClick(fabMain);
-/* //Generated Code
-        todayViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-*/
         return root;
     }
 
@@ -191,8 +162,12 @@ public class TodayFragment extends Fragment {
             Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
-                nameText.add(cursor.getString(1)); //getting startTime
-                timeText.add(cursor.getString(3)); //getting taskName
+                idTxt.add(cursor.getString(0));
+                nameTxt.add(cursor.getString(1));
+                categoryTxt.add(cursor.getString(2));
+                dateTxt.add(cursor.getString(3));
+                startTxt.add(cursor.getString(4));
+                endTxt.add(cursor.getString(5));
             }
         }
     }

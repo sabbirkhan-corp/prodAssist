@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".addtask.TodoUpdateActivity">
+
+    <ImageButton
+        android:id="@+id/cancel_todo_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_close" />
+
+    <ImageButton
+        android:id="@+id/okay_todo_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_todo_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cancel_todo_up"
+        app:layout_constraintTop_toTopOf="@+id/cancel_todo_up"
+        app:srcCompat="@drawable/ic_okay" />
+
+    <TextView
+        android:id="@+id/title_text_todo_up"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Update Todo Task"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cancel_todo_up"
+        app:layout_constraintEnd_toStartOf="@+id/okay_todo_up"
+        app:layout_constraintStart_toEndOf="@+id/cancel_todo_up"
+        app:layout_constraintTop_toTopOf="@+id/cancel_todo_up" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="okay_todo_up,cancel_todo_up,title_text_todo_up"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+    <EditText
+        android:id="@+id/task_name_todo_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_bg"
+        android:ems="10"
+        android:hint="Task Name"
+        android:inputType="textPersonName|textAutoComplete"
+        android:paddingStart="10sp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text_todo_up" />
+
+    <EditText
+        android:id="@+id/task_category_todo_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_bg"
+        android:ems="10"
+        android:hint="Catagory of the task"
+        android:inputType="textPersonName|textAutoComplete"
+        android:paddingStart="10sp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/task_name_todo_up"
+        app:layout_constraintStart_toStartOf="@+id/task_name_todo_up"
+        app:layout_constraintTop_toBottomOf="@+id/task_name_todo_up" />
+
+    <TextView
+        android:id="@+id/date_edit_todo_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_bg"
+        android:focusable="true"
+        android:hint="Enter Date"
+        android:inputType="date"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/task_category_todo_up"
+        app:layout_constraintStart_toStartOf="@+id/task_category_todo_up"
+        app:layout_constraintTop_toBottomOf="@+id/task_category_todo_up" />
+
+    <TextView
+        android:id="@+id/start_time_edit_todo_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_bg"
+        android:ems="10"
+        android:hint="Start Time"
+        app:layout_constraintEnd_toEndOf="@+id/date_edit_todo_up"
+        app:layout_constraintStart_toStartOf="@+id/date_edit_todo_up"
+        app:layout_constraintTop_toBottomOf="@+id/date_edit_todo_up" />
+
+    <TextView
+        android:id="@+id/end_time_edit_todo_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_bg"
+        android:ems="10"
+        android:hint="End Time"
+        app:layout_constraintEnd_toEndOf="@+id/start_time_edit_todo_up"
+        app:layout_constraintStart_toStartOf="@+id/start_time_edit_todo_up"
+        app:layout_constraintTop_toBottomOf="@+id/start_time_edit_todo_up" />
+
+    <Button
+        android:id="@+id/todo_save_btn_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Update"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/end_time_edit_todo_up" />
+
+    <Button
+        android:id="@+id/todo_cancel_btn_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/todo_save_btn_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/todo_save_btn_up" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

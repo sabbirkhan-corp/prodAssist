@@ -3,9 +3,11 @@ package com.sabbirunix.prodassist.ui.today;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sabbirunix.prodassist.R;
-import com.sabbirunix.prodassist.addtask.ProjectActivity;
+import com.sabbirunix.prodassist.addtask.RepeatingActivity;
 import com.sabbirunix.prodassist.addtask.RegularActivity;
 import com.sabbirunix.prodassist.addtask.RegularActivityDatabase;
 import com.sabbirunix.prodassist.addtask.TodoActivity;
@@ -35,6 +37,8 @@ public class TodayFragment extends Fragment {
     private TodayViewModel todayViewModel;
     TextView textTodo, textProject, textRegular;
     FloatingActionButton fabMain, fabRegular, fabProject, fabTodo;
+    ImageView emptyTodayImg;
+    TextView emptyTodayTxt;
     /*
         setting boolean for setting the subFabs invisible at first
         and only making it visible after checking the onClick state of the boolean
@@ -59,6 +63,8 @@ public class TodayFragment extends Fragment {
         textTodo = root.findViewById(R.id.text_todo);
         textProject = root.findViewById(R.id.text_project);
         textRegular = root.findViewById(R.id.text_regular);
+        emptyTodayImg = root.findViewById(R.id.empty_today_img);
+        emptyTodayTxt = root.findViewById(R.id.empty_today_txt);
 
         //setting the views visibility to gone
         fabTodo.setVisibility(View.GONE);  //using setVisibility requires restricted api
@@ -73,12 +79,12 @@ public class TodayFragment extends Fragment {
             public void onClick(View v) {
 
                 if (!isAllFabsVisible) {
-                    fabRegular.show();
+//                    fabRegular.show();
                     fabProject.show();
                     fabTodo.show();
                     textTodo.setVisibility(View.VISIBLE);
                     textProject.setVisibility(View.VISIBLE);
-                    textRegular.setVisibility(View.VISIBLE);
+//                    textRegular.setVisibility(View.VISIBLE);
                     isAllFabsVisible = true;
                 } else {
                     fabRegular.hide();
@@ -106,7 +112,8 @@ public class TodayFragment extends Fragment {
         fabProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ProjectActivity.class);
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setData(CalendarContract.Events.CONTENT_URI);
                 startActivity(intent);
             }
         });
@@ -159,6 +166,8 @@ public class TodayFragment extends Fragment {
     void displayRegularTask() {
         Cursor cursor = regularActDB.readRegularTask();
         if (cursor.getCount() == 0) {
+            emptyTodayImg.setVisibility(View.VISIBLE);
+            emptyTodayTxt.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
@@ -169,6 +178,8 @@ public class TodayFragment extends Fragment {
                 startTxt.add(cursor.getString(4));
                 endTxt.add(cursor.getString(5));
             }
+            emptyTodayImg.setVisibility(View.GONE);
+            emptyTodayTxt.setVisibility(View.GONE);
         }
     }
 }

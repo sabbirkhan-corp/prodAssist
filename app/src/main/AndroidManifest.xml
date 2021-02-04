@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomProductivity">
-        <activity android:name=".addtask.TodoUpdateActivity"></activity>
-        <activity android:name=".ui.wallet.WalletUpdateActivity" />
-        <activity android:name=".ui.wallet.WalletAddActivity" />
-        <activity android:name=".ui.notes.NotesUpdateActivity" />
+        <activity
+            android:name=".addtask.TodoUpdateActivity"
+            android:label="Update Todo Task" />
+        <activity
+            android:name=".ui.wallet.WalletUpdateActivity"
+            android:label="Update Wallet Item" />
+        <activity
+            android:name=".ui.wallet.WalletAddActivity"
+            android:label="Add Wallet Item" />
+        <activity
+            android:name=".ui.notes.NotesUpdateActivity"
+            android:label="Update Note" />
         <activity
             android:name=".ui.notes.NotesAddActivity"
             android:label="Add Notes"
@@ -22,7 +30,7 @@
             android:label="Add Regular Task"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".addtask.ProjectActivity"
+            android:name=".addtask.RepeatingActivity"
             android:label="Add A Project"
             android:parentActivityName=".MainActivity" />
         <activity

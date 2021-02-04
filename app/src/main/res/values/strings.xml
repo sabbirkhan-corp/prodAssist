@@ -6,4 +6,5 @@
     <string name="delete_item">Delete</string>
     <string name="empty_note"> "No notes found! \nPlease add some note" </string>
     <string name="empty_wallet"> "Wallet empty! \n Add transaction to track your wallet </string>
+    <string name="empty_task"> "Task List empty! \n Add Tasks</string>
 </resources>

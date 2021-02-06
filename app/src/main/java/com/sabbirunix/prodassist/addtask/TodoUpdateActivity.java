@@ -157,7 +157,8 @@ public class TodoUpdateActivity extends AppCompatActivity implements View.OnClic
             case R.id.okay_todo_up: {
                 if (!isTextEmpty()) {
                     RegularActivityDatabase regDB = new RegularActivityDatabase(TodoUpdateActivity.this);
-                    regDB.insertRegularTask(
+                    regDB.updateItem(
+                            tID,
                             taskNameU.getText().toString().trim(),
                             taskCategoryU.getText().toString().trim(),
                             taskDateU.getText().toString().trim(),

@@ -11,16 +11,20 @@
         android:theme="@style/Theme.BottomProductivity">
         <activity
             android:name=".addtask.TodoUpdateActivity"
-            android:label="Update Todo Task" />
+            android:label="Update Todo Task"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.wallet.WalletUpdateActivity"
-            android:label="Update Wallet Item" />
+            android:label="Update Wallet Item"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.wallet.WalletAddActivity"
-            android:label="Add Wallet Item" />
+            android:label="Add Wallet Item"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.notes.NotesUpdateActivity"
-            android:label="Update Note" />
+            android:label="Update Note"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.notes.NotesAddActivity"
             android:label="Add Notes"

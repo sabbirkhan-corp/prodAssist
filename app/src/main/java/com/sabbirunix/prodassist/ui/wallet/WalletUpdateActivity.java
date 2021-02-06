@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sabbirunix.prodassist.MainActivity;
 import com.sabbirunix.prodassist.R;
 
 import java.text.SimpleDateFormat;
@@ -82,7 +84,9 @@ public class WalletUpdateActivity extends AppCompatActivity implements View.OnCl
             public void onClick(DialogInterface dialog, int which) {
                 walletDBHelper = new WalletDBHelper(WalletUpdateActivity.this);
                 walletDBHelper.deleteWalletItem(wID);
-                finish();//to finish activity and get back
+//                finish();//to finish activity and get back
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -135,7 +139,9 @@ public class WalletUpdateActivity extends AppCompatActivity implements View.OnCl
                             exCategoryU.getText().toString(),
                             Integer.parseInt(exAmountU.getText().toString())
                     );
-                    lastFragmentPop(); //getting back on lastFragment
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+//                    lastFragmentPop(); //getting back on lastFragment
                 }
             }
             break;

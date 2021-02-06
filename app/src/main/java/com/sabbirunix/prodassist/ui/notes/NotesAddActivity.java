@@ -46,9 +46,9 @@ public class NotesAddActivity extends AppCompatActivity implements View.OnClickL
                             noteCategory.getText().toString(),
                             noteDetails.getText().toString()
                     );
-//                    Intent intent = new Intent(getApplicationContext(), NotesFragment.class);
-//                    startActivity(intent);
-                    lastFragmentPop(); //getting back on lastFragment
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+//                    lastFragmentPop(); //getting back on lastFragment
                 }
             }
             break;

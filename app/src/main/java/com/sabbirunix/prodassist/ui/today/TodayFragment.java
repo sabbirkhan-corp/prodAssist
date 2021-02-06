@@ -168,7 +168,7 @@ public class TodayFragment extends Fragment {
         if (cursor.getCount() == 0) {
             emptyTodayImg.setVisibility(View.VISIBLE);
             emptyTodayTxt.setVisibility(View.VISIBLE);
-            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
                 idTxt.add(cursor.getString(0));

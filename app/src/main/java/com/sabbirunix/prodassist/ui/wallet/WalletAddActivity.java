@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sabbirunix.prodassist.MainActivity;
 import com.sabbirunix.prodassist.R;
 import com.sabbirunix.prodassist.ui.notes.NotesAddActivity;
 import com.sabbirunix.prodassist.ui.notes.NotesDBHelper;
@@ -63,7 +65,9 @@ public class WalletAddActivity extends AppCompatActivity implements View.OnClick
                             Integer.parseInt(exAmount.getText().toString())
                     );
                     //some random comment
-                    lastFragmentPop(); //getting back on lastFragment
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+//                    lastFragmentPop(); //getting back on lastFragment
                 }
             }
             break;

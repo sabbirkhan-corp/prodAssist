@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sabbirunix.prodassist.MainActivity;
 import com.sabbirunix.prodassist.R;
 
 public class NotesUpdateActivity extends AppCompatActivity implements View.OnClickListener {
@@ -71,7 +73,9 @@ public class NotesUpdateActivity extends AppCompatActivity implements View.OnCli
             public void onClick(DialogInterface dialog, int which) {
                 notesDBHelper = new NotesDBHelper(NotesUpdateActivity.this);
                 notesDBHelper.deleteNote(id);
-                finish();//to finish activity and get back
+//                finish();//to finish activity and get back
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -117,7 +121,9 @@ public class NotesUpdateActivity extends AppCompatActivity implements View.OnCli
                             noteCategoryU.getText().toString(),
                             noteDetailsU.getText().toString()
                     );
-                    lastFragmentPop(); //getting back on lastFragment
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+//                    lastFragmentPop(); //getting back on lastFragment
                 }
             }
             break;

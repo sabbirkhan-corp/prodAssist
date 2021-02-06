@@ -99,7 +99,9 @@ public class TodoUpdateActivity extends AppCompatActivity implements View.OnClic
             public void onClick(DialogInterface dialog, int which) {
                 RegularActivityDatabase dbHelper = new RegularActivityDatabase(TodoUpdateActivity.this);
                 dbHelper.deleteItem(tID);
-                finish();//to finish activity and get back
+//                finish();//to finish activity and get back
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -157,14 +159,15 @@ public class TodoUpdateActivity extends AppCompatActivity implements View.OnClic
             case R.id.okay_todo_up: {
                 if (!isTextEmpty()) {
                     RegularActivityDatabase regDB = new RegularActivityDatabase(TodoUpdateActivity.this);
-                    regDB.insertRegularTask(
+                    regDB.updateItem(
+                            tID,
                             taskNameU.getText().toString().trim(),
                             taskCategoryU.getText().toString().trim(),
                             taskDateU.getText().toString().trim(),
                             taskStartU.getText().toString().trim(),
                             taskEndU.getText().toString().trim()
                     );
-                    lastFragmentPop(); //getting back on lastFragment
+//                    lastFragmentPop(); //getting back on lastFragment
                     Intent intent = new Intent(TodoUpdateActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
@@ -258,7 +261,13 @@ public class TodoUpdateActivity extends AppCompatActivity implements View.OnClic
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                        taskEndU.setText(sHour + ":" + sMinute);
+                        String state = "AM";
+                        if (sHour > 12) {
+                            sHour -= 12;
+                            state = "PM";
+                        }
+                        String time = sHour + ":" + sMinute + " " + state;
+                        taskEndU.setText(time);
                     }
                 }, hour, minutes, false);
         timePickerDialog.show();

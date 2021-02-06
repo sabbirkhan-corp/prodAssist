@@ -88,7 +88,7 @@ public class NotesFragment extends Fragment {
         if (cursor.getCount() == 0) {
             emptyNotesImg.setVisibility(View.VISIBLE);
             emptyNotesTxt.setVisibility(View.VISIBLE);
-//            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
                 noteID.add(cursor.getString(0)); //getting noteID

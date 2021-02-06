@@ -87,7 +87,7 @@ public class TodoActivity extends AppCompatActivity implements View.OnClickListe
                             taskStart.getText().toString().trim(),
                             taskEnd.getText().toString().trim()
                     );
-                    lastFragmentPop(); //getting back on lastFragment
+//                    lastFragmentPop(); //getting back on lastFragment
                     Intent intent = new Intent(TodoActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
@@ -181,7 +181,13 @@ public class TodoActivity extends AppCompatActivity implements View.OnClickListe
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                        taskEnd.setText(sHour + ":" + sMinute);
+                        String state = "AM";
+                        if (sHour > 12) {
+                            sHour -= 12;
+                            state = "PM";
+                        }
+                        String time = sHour + ":" + sMinute + " " + state;
+                        taskEnd.setText(time);
                     }
                 }, hour, minutes, false);
         timePickerDialog.show();
